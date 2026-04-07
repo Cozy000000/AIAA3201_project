@@ -1,0 +1,45 @@
+# Stage 2 placeholder for the SAM2 pipeline.
+# This file reserves the interface expected by `scripts/run_sam2_masks.py`.
+
+sam2:
+  enabled: false
+  model_id: null
+  model_config_path: null
+  checkpoint_path: null
+  device: cuda
+  automatic_mode: false
+  save_overlay: true
+
+prompt:
+  prompt_json: null
+  prompt_mode: bbox
+  require_prompt_json: true
+  allow_bbox: true
+  allow_points: true
+  allow_multiple_prompts: true
+
+preprocess:
+  target_fps: null
+  target_width: null
+  target_height: null
+  resize_mode: keep_aspect
+  pad_value: 0
+  frame_dir_name: frames
+
+postprocess:
+  binary_threshold: 0.5
+  dilation_kernel: 5
+  dilation_iterations: 1
+  min_component_area: 0
+  keep_largest_component: false
+  fill_holes: true
+
+output:
+  mask_dir_name: masks_sam2
+  overlay_dir_name: overlays
+  meta_filename: meta.json
+
+runtime:
+  fail_if_missing_checkpoint: true
+  fail_if_missing_prompt_json: true
+  write_binary_masks: true

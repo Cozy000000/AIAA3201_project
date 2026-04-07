@@ -1,0 +1,45 @@
+logging:
+  level: INFO
+
+sam2:
+  enabled: true
+  model_id: facebook/sam2-hiera-tiny
+  model_config_path: null
+  checkpoint_path: null
+  device: cpu
+  automatic_mode: false
+  save_overlay: true
+
+prompt:
+  prompt_json: data/smoke_case/prompts/sam2_prompt.json
+  prompt_mode: bbox
+  require_prompt_json: true
+  allow_bbox: true
+  allow_points: true
+  allow_multiple_prompts: true
+
+preprocess:
+  target_fps: null
+  target_width: null
+  target_height: null
+  resize_mode: keep_aspect
+  pad_value: 0
+  frame_dir_name: frames
+
+postprocess:
+  binary_threshold: 0.0
+  dilation_kernel: 1
+  dilation_iterations: 0
+  min_component_area: 0
+  keep_largest_component: false
+  fill_holes: true
+
+output:
+  mask_dir_name: masks_sam2
+  overlay_dir_name: overlays
+  meta_filename: meta.json
+
+runtime:
+  fail_if_missing_checkpoint: true
+  fail_if_missing_prompt_json: true
+  write_binary_masks: true

@@ -1,0 +1,42 @@
+logging:
+  level: INFO
+
+baseline:
+  enabled: true
+  detector_backend: motion_saliency
+  detector_weights: null
+  target_classes:
+    - person
+    - car
+  score_threshold: 0.5
+  mask_threshold: 0.5
+  use_lk_motion_filter: true
+  use_temporal_borrowing: false
+  device: cpu
+  save_overlay: true
+
+preprocess:
+  target_width: null
+  target_height: null
+  resize_mode: keep_aspect
+  pad_value: 0
+
+motion:
+  lk_win_size: 21
+  lk_max_level: 3
+  lk_criteria_count: 30
+  lk_criteria_eps: 0.01
+  motion_threshold: 0.5
+  min_points: 4
+
+mask_refine:
+  binary_threshold: 0.5
+  dilation_kernel: 5
+  dilation_iterations: 1
+  min_component_area: 10
+  keep_largest_component: false
+  fill_holes: true
+
+inpaint:
+  method: telea
+  radius: 3

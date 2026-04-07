@@ -1,0 +1,41 @@
+baseline:
+  enabled: false
+  detector_backend: maskrcnn
+  detector_weights: null
+  target_classes:
+    - person
+    - car
+  use_lk_motion_filter: true
+  use_temporal_borrowing: false
+  device: cuda
+  save_overlay: true
+
+motion:
+  lk_win_size: 21
+  lk_max_level: 3
+  lk_criteria_count: 30
+  lk_criteria_eps: 0.01
+  motion_threshold: 1.0
+  min_track_length: 2
+  flow_magnitude_scale: 1.0
+
+mask_refine:
+  dilation_kernel: 7
+  dilation_iterations: 1
+  close_kernel: 5
+  min_component_area: 0
+  keep_largest_component: false
+
+inpaint:
+  method: telea
+  radius: 3
+  preserve_edges: true
+
+output:
+  mask_dir_name: masks_baseline
+  result_dir_name: results_baseline
+  video_dir_name: videos
+
+runtime:
+  fail_if_no_detections: true
+  fail_if_empty_masks: true
