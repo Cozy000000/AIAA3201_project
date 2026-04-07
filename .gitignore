@@ -1,0 +1,28 @@
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Tooling and local metadata
+.DS_Store
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environment files
+.env
+.venv/
+venv/
+
+# Temporary smoke and debug artifacts
+tmp_smoke/
+tmp_sam2_smoke/
+
+# Generated test outputs
+data/smoke_case/processed/
+data/smoke_case/raw/
+data/smoke_case/prompts/
+
+# Optional local model/download caches
+checkpoints/
+*.pt
+*.pth
